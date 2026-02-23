@@ -13,9 +13,5 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
-
-// اسم المشروع
 rootProject.name = "BroadcastStudio"
-
-// ربط مجلد التطبيق بالمشروع
 include ':app'
