@@ -1,40 +1,25 @@
-name: Build Android APK 2026
-on:
-  push:
-    branches: [ main, master ] # يدعم الاسمين لضمان العمل
+name: Build APK Fast
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions: # تحديث 2026: لازم تدي صلاحية الكتابة للأكشن
-      contents: write
-    
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Set up JDK 17 # أندرويد 13 و 14 بيحتاجوا JDK 17 مش 11
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: gradle
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3 # الأكشن الرسمي الجديد لجرادل
-
-    - name: Generate Gradle Wrapper # ده السر! بيصنع ملف gradlew لو مش موجود عشان ميفشلش
-      run: |
-        if [ ! -f gradlew ]; then
-          gradle wrapper
-        fi
-        chmod +x gradlew
-
-    - name: Build Debug APK
-      run: ./gradlew assembleDebug --stacktrace # أضفنا stacktrace عشان لو فيه خطأ نعرف سببه بالظبط
-
-    - name: Upload APK Artifact
-      uses: actions/upload-artifact@v4 # تحديث v4 أسرع بكتير
-      with:
-        name: Broadcast-Mixer-v1
-        path: app/build/outputs/apk/debug/app-debug.apk
+      - name: Build with Gradle
+        run: |
+          gradle assembleDebug --stacktrace
+          
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: BroadcastApp
+          path: app/build/outputs/apk/debug/*.apk
