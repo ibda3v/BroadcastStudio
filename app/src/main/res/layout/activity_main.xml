@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.microsoft.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121212">
+
+    <WebView
+        android:id="@+id/socialWebView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#1E1E1E">
+
+        <TextView android:text="Audio Mixer Control" android:textColor="#FFFFFF" android:textStyle="bold" android:layout_gravity="center" />
+
+        <TextView android:text="Internal File Volume" android:textColor="#BBBBBB" />
+        <SeekBar android:id="@+id/fileVolume" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="100" android:progress="80" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:text="External Mic" android:textColor="#BBBBBB" android:layout_weight="1" />
+            <Switch android:id="@+id/micSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <SeekBar android:id="@+id/micVolume" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="100" android:progress="50" />
+
+        <Button android:id="@+id/btnPlaylist" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Select Playlist / Video" android:backgroundTint="#4CAF50" />
+    </LinearLayout>
+</LinearLayout>
