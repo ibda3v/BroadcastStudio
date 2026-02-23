@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 33
+    defaultConfig {
+        applicationId "com.yourname.broadcaststudio"
+        minSdkVersion 24 // يعمل على أندرويد 7 فما فوق
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.8.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    
+    // مكتبة مشغل الفيديو والبلاي ليست
+    implementation "com.google.android.exoplayer:exoplayer:2.18.5"
+    
+    // مكتبة معالجة الصوت المتقدمة
+    implementation "com.github.microshow:RxFFmpeg:4.9.0"
+}
